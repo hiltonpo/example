@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Booking System</h1>
+        <template v-if="!isTableCreated">
+            <div id="create-table">
+                <h2>table counts?</h2>
+                <input type="number" v-model.number="tableCount">
+            </div>
+            <div id="seats-settings" v-if="tableCount">
+                <h2>Seats Settings</h2>
+                <ul>
+                    <li v-for="n in tableCount">
+                        {{ n }} / <input type="number" v-model.number="seats[n-1]">
+    
+                    </li>
+                </ul>
+                <button @click="createTable">Create Tables</button>
+            </div>
+
+        </template>
+        <template v-if="isTableCreated">
+            <div id="tables">
+                <ul>
+                    <li v-for="(seat, index) in seats" @click="openModal(index)">
+                        <template v-if="!bookingData[index]">
+                            0 / {{ seat }}位
+                        </template>
+                        <template v-else="bookingData[index]">
+                            <p>{{ bookingData[index].seats }} / {{ seat }}位</p> 
+                            <p>{{ bookingData[index].name }} 先生 / 小姐</p> 
+                        </template>
+                    </li>
+                </ul>
+            </div>
+            <div id="booking-modal" v-if="bookingId!=null">
+                <label>
+                    name: <input v-model="bookingInfo.name">
+                </label> <br>
+                <label>
+                    phone: <input v-model="bookingInfo.phone">
+                </label> <br>
+                <label>
+                    seats: <input v-model="bookingInfo.seats">
+                </label> <br>
+                <label>
+                    time: <input v-model="bookingInfo.time">
+                </label> <br>
+                <button class="booking" @click="booking">Booking</button>
+                <button class="cancel" @click="closeModal">X</button>
+            </div>
+        </template>
+        
+    </div>
+    <script src="main.js" charset="UTF-8"></script>
+    
+</body>
+</html>
