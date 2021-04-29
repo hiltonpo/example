@@ -1,0 +1,130 @@
+/*calendar*/
+
+#calendar {
+    margin: 0 auto;
+    width: 90%;
+}
+
+#header {
+    font-size: 2.4rem;
+    font-weight: bold;
+
+}
+
+.day, .date-block {
+    float: left;
+    width: calc(100% / 7);
+}
+
+#dates {
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.date-block {
+    padding: 4px;
+    border-top:1px solid #ccc;
+    border-left: 1px solid #ccc;
+    height: 15vh;
+    overflow: auto;
+}
+
+.date-block.empty {
+    background-color: #eee;
+}
+
+.event {
+    margin-bottom: 2px;
+    background: orange;
+    color:white;
+    padding: 0 6px;
+    border-radius: 12px;
+}
+
+.event .title {
+    float: left;
+}
+
+.event .from {
+    float: right;
+}
+
+/*info panel*/
+#info-panel {
+    display: none;
+    position: fixed;
+    width: 280px;
+    background: white;
+    border: 1px solid #ccc;
+}
+
+#info-panel.open {
+    display: block;
+}
+
+#info-panel label {
+    font-size: .8rem;
+    color: #ccc;
+}
+
+#info-panel .close {
+    position: relative;
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+}
+
+#info-panel .title, #info-panel .time-picker {
+    border-bottom: 1px solid #ccc;
+}
+
+#info-panel .title, #info-panel .time-picker, #info-panel .description {
+    padding: 10px;
+}
+
+.error-msg {
+    display: none;
+}
+
+.error-msg.open {
+    display: block;
+}
+
+.selected-date {
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+#description {
+    width: 100%;
+}
+
+#info-panel button {
+    display: none;
+    border: none;
+    padding: 10px;
+    background: rgba(129, 127, 127, 0.747);
+    color: white;
+    cursor: pointer;
+}
+
+#info-panel.new button.create, #info-panel.new button.cancel {
+    display: block;
+    width: 50%;
+    float: left;
+}
+
+#info-panel.update button.update, #info-panel.update button.cancel, #info-panel.update button.delete {
+    display: block;
+    width: 50%;
+    float: left;
+}
+
+#info-panel.update button.delete {
+    width: 100%;
+    background: #c21717;
+}
+
+#info-panel.new button.create, #info-panel.update button.create, #info-panel.update button.update {
+    background: #74be00;
+}
